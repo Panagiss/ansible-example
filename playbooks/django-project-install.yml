@@ -94,12 +94,15 @@
 
     - name: make migrations
       django_manage:
-        command: "{{ item }}"
+        command: makemigrations
         project_path: "{{app_dir}}/myproject"
         virtualenv: "{{app_dir}}/myvenv"
-      with_items:
-        - makemigrations
-        - migrate
+     
+    - name: migrate
+      django_manage:
+        command: migrate
+        project_path: "{{app_dir}}/myproject"
+        virtualenv: "{{app_dir}}/myvenv"
 
     
 
