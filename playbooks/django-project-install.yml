@@ -95,13 +95,13 @@
     - name: make migrations
       django_manage:
         command: makemigrations
-        project_path: "{{app_dir}}/myproject"
+        project_path: "{{app_dir}}/myproject/"
         virtualenv: "{{app_dir}}/myvenv"
      
     - name: migrate
       django_manage:
         command: migrate
-        project_path: "{{app_dir}}/myproject"
+        project_path: "{{app_dir}}/myproject/"
         virtualenv: "{{app_dir}}/myvenv"
 
     
