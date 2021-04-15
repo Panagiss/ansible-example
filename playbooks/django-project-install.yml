@@ -1,5 +1,5 @@
 ---
-- hosts: webserver
+- hosts: deployment_server
 
   vars:
     app_dir: "{{user_dir}}/django-project"
