@@ -20,3 +20,9 @@ django:
   env:
     SECRET_KEY: 'sfvgbrh212131'
     DATABASE_URL: 'postgresql://demouser:pass123@db01/demodb'
+    DATABASE_ENGINE: 'django.db.backends.postgresql_psycopg2'
+    DATABASE_NAME: 'demodb'
+    DATABASE_USER: 'demouser'
+    DATABASE_PASSWORD: 'pass123'
+    DATABASE_HOST: '20.61.41.224'
+    DATABASE_PORT: '5432'
