@@ -93,7 +93,7 @@
     - name: make migrations
       django_manage:
         command: "{{ item }}"
-        project_path: "{{app_dir}}/myproject"
+        app_path: "{{app_dir}}/myproject"
         virtualenv: "{{app_dir}}/myvenv"
       with_items:
         - makemigrations
