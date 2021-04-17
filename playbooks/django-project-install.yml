@@ -72,7 +72,7 @@
     lineinfile:
       dest: "{{app_dir}}/myproject/myproject/settings.py"
       regexp: "^ALLOWED_HOSTS ="
-      line: "ALLOWED_HOSTS = [ {{public_ip.stdout | trim }} ]"
+      line: "ALLOWED_HOSTS = {{[public_ip.stdout | trim]}}"
       state: present
 
   - name: install and activate virtual environment
