@@ -68,11 +68,13 @@
     debug:
       msg: "Public IP= {{public_ip.stdout}}"
 
-  - name: mix and print all IPs into single variable
+  - name: mix all IPs into single variable
     set_fact:
       all_addresses: "{{ ansible_all_ipv4_addresses|default([]) + [ public_ip.stdout ] }}"
-      debug:
-        var: all_addresses
+  
+  - name: print all IPS
+    debug:
+      var: all_addresses
 
   - name: add ip in django ALLOWED_HOSTS
     lineinfile:
