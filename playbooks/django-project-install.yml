@@ -70,7 +70,7 @@
 
   - name: mix all IPs into single variable
     set_fact:
-      all_addresses: "{{ all_addresses|default([]) + [', ' item] }}"
+      all_addresses: "{{ all_addresses|default([]) + [ ', ' ~ item ] }}"
     loop: "{{ansible_all_ipv4_addresses}}"
 
   - name: add ip in django ALLOWED_HOSTS
