@@ -68,20 +68,17 @@
     debug:
       msg: "Public IP= {{public_ip.stdout}}"
 
+  - name: mix all IPs into single variable
+    set_fact:
+      all_addresses: "{{ all_addresses|default([]) + [', ' item] }}"
+    loop: "{{ansible_all_ipv4_addresses}}"
+
   - name: add ip in django ALLOWED_HOSTS
     lineinfile:
       dest: "{{app_dir}}/myproject/myproject/settings.py"
       regexp: "^ALLOWED_HOSTS ="
-      line: "ALLOWED_HOSTS = {{ansible_all_ipv4_addresses}}"
+      line: "ALLOWED_HOSTS = {{all_addresses}}"
       state: present
-
-  # - name: add ip in django public ALLOWED_HOSTS 
-  #   lineinfile:
-  #     dest: "{{app_dir}}/myproject/myproject/settings.py"
-  #     regexp: "^ALLOWED_HOSTS ="
-  #     insertbefore: 
-  #     line: "ALLOWED_HOSTS = {{ansible_all_ipv4_addresses}}"
-  #     state: present
 
   - name: install and activate virtual environment
     block:
